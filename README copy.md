@@ -1,4 +1,4 @@
-# Living Style Guide (Dependency Template)
+# NPM Module Boilerplate
 
 **Start developing your NPM module in seconds** ✨
 
