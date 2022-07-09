@@ -1,4 +1,4 @@
-name: Develop Frontend Nginx
+name: Develop Frontend Living Style Guide
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build-frontend:
-    name: Build Frontend Nginx
+    name: Build Frontend Living Style Guide
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
