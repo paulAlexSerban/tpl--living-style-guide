@@ -6,8 +6,8 @@ on:
       - release
       - main
       - develop
-    paths:
-      - ./**/*.bash
+    # paths:
+    #   - ./**/*.bash
   workflow_call:
 
 jobs:
@@ -25,10 +25,8 @@ jobs:
         id: changed-bash-files
         with:
           files: |
-              *.bash
-              *.sh
-              **/*.bash
-              **/*.sh
+              ./**/*.bash
+              ./**/*.sh
 
       - name: "🔍  Lint Bash Script with ShellCheck"
         if: steps.changed-bash-files.outputs.any_changed == 'true'
