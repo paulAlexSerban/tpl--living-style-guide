@@ -6,6 +6,8 @@ on:
       - release
       - main
       - develop
+    paths:
+      - ./**/*.bash
   workflow_call:
 
 jobs:
