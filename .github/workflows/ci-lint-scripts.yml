@@ -6,8 +6,8 @@ on:
       - release
       - main
       - develop
-    # paths:
-    #   - ./**/*.bash
+    paths:
+      - ./**/*.bash
   workflow_call:
 
 jobs:
@@ -26,7 +26,6 @@ jobs:
         with:
           files: |
               ./**/*.bash
-              ./**/*.sh
 
       - name: List all Bash changed files
         run: |
