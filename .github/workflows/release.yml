@@ -1,7 +1,11 @@
 ---
 name: Release
 on:
-  workflow_dispatch:
+    pull_request:
+      types: [closed]
+      branches-ignore:
+        - release
+        - main
 
 jobs:
   release:
