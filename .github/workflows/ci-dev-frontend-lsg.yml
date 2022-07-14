@@ -35,7 +35,7 @@ jobs:
       - name: List all Living Style Guide changed files
         run: |
           for file in ${{ steps.changed-frontend-living-style-guide-files.outputs.all_changed_files }}; do
-            echo '$file was changed'
+            echo "$file was changed"
           done
 
       - name: 'Cache node_modules'
