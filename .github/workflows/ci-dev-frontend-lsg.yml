@@ -68,5 +68,5 @@ jobs:
         run: bash scripts/frontend-living-style-guide-test.bash
 
       - name: '🏗️  Build Frontend living-style-guide'
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'pull_request'
+        if: (steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'pull_request') || 'workflow_call'
         run: bash scripts/frontend-living-style-guide-build.bash
