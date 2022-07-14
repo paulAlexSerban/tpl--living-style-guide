@@ -1,5 +1,7 @@
 # Living Style Guide
 
+## About
+
 ## Resources
 
 - [Extending Atomic Design](https://bradfrost.com/blog/post/extending-atomic-design/)
