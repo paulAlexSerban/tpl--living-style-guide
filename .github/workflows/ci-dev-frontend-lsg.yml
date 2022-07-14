@@ -1,62 +1,75 @@
+---
 name: Develop Frontend Living Style Guide
 
 on:
   push:
-    branches-ignore:
-      - release
-      - main
-      - develop
-
-  workflow_call:
+  pull_request:
 
 jobs:
-  build-frontend:
-    name: Build Frontend Living Style Guide
+  dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
-      - name: "☁️ checkout repository"
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Dump GitHub context
+        id: github_context_step
+        run: echo '${{ toJSON(github) }}'
+      - name: Dump job context
+        run: echo '${{ toJSON(job) }}'
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+      - name: Dump runner context
+        run: echo '${{ toJSON(runner) }}'
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+      - name: Dump matrix context
+        run: echo '${{ toJSON(matrix) }}'
 
-      - name: "🔍  Verify Changed Frontend Living Style Guide Files"
-        uses: tj-actions/changed-files@v23.1
-        id: changed-frontend-living-style-guide-files
-        with:
-          files: |
-              frontend/living-style-guide/**/*
+  # dev-fe-lsg:
+  #   name: Develop Frontend Living Style Guide
+  #   runs-on: ubuntu-latest
+  #   steps:
+      # - name: "☁️ checkout repository"
+      #   uses: actions/checkout@v3
+      #   with:
+      #     fetch-depth: 0
 
-      - name: "Cache node_modules"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      # - name: "🔍  Verify Changed Frontend Living Style Guide Files"
+      #   uses: tj-actions/changed-files@v23.1
+      #   id: changed-frontend-living-style-guide-files
+      #   with:
+      #     files: |
+      #         frontend/living-style-guide/**/*
 
-      - name: "🔧  Setup NodeJS 14.19.1"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.19.1
+      # - name: "Cache node_modules"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node-
 
-      - name: "🔧  Install npm@latest"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        run: npm i -g npm@latest
+      # - name: "🔧  Setup NodeJS 14.19.1"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 14.19.1
 
-      - name: "📦  Install Frontend Living Style Guide Development dependencies"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        run: bash scripts/frontend-install-living-style-guide.bash
+      # - name: "🔧  Install npm@latest"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   run: npm i -g npm@latest
 
-      - name: "🔍  Lint Frontend Living Style Guide"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        run: bash scripts/frontend-lint-living-style-guide.bash
+      # - name: "📦  Install Frontend Living Style Guide Development dependencies"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   run: bash scripts/frontend-install-living-style-guide.bash
 
-      - name: "🧪  Test Frontend Living Style Guide"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        run: bash scripts/frontend-test-living-style-guide.bash
+      # - name: "🔍  Lint Frontend Living Style Guide"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   run: bash scripts/frontend-lint-living-style-guide.bash
 
-      - name: "🏗️  Build Frontend living-style-guide"
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        run: bash scripts/frontend-build-living-style-guide.bash
+      # - name: "🧪  Test Frontend Living Style Guide"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   run: bash scripts/frontend-test-living-style-guide.bash
+
+      # - name: "🏗️  Build Frontend living-style-guide"
+      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+      #   run: bash scripts/frontend-build-living-style-guide.bash
