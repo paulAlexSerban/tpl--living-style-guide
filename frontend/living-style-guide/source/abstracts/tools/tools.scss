@@ -1,3 +1,11 @@
+/*------------------------------------*\
+  #ABSTRACTS-TOOLS
+\*------------------------------------*/
+
+/**
+ * import extends.scss after the mixins.scss because mixins.scss is used to generate extends
+ */
+
 @import "./functions/functions.scss";
 @import "./mixins/mixins.scss";
-@import "./extends/extends.scss"; // extends needs to be placed after the mixin - because mixins are used to generate extends
+@import "./extends/extends.scss";
