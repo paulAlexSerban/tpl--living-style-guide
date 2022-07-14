@@ -3,7 +3,7 @@ name: Lint Scripts
 on:
   push:
     paths:
-      - ./**/*.bash
+      - **/*.bash
     branches-ignore:
       - release
       - main
