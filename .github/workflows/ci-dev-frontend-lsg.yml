@@ -52,7 +52,7 @@ jobs:
           node-version: 14.19.1
 
       - name: '🔧  Install npm@latest'
-        if: ssteps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' || 'workflow_dispatch'
+        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' || 'workflow_dispatch'
         run: npm i -g npm@latest
 
       - name: '📦  Install Frontend Living Style Guide Development dependencies'
