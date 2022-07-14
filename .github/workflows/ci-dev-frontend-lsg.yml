@@ -4,12 +4,11 @@ name: Develop Frontend Living Style Guide
 on:
   push:
     paths:
-      - "./frontend/living-style-guide/*"
+      - "./frontend/living-style-guide/**/*"
     branches-ignore:
       - release
       - main
       - develop
-
 
   pull_request:
       paths:
