@@ -1,11 +1,10 @@
 ---
 name: Release
 on:
-    pull_request:
-      types: [closed]
-      branches-ignore:
-        - release
+    push:
+      branches:
         - main
+        - release
 
 jobs:
   release:
