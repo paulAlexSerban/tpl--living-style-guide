@@ -9,6 +9,7 @@ on:
       - develop
 
   pull_request:
+    types: [opened, synchronize]
 
   workflow_call:
 
@@ -68,6 +69,6 @@ jobs:
         if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'push'
         run: bash scripts/frontend-living-style-guide-test.bash
 
-      # - name: '🏗️  Build Frontend living-style-guide'
-      #   if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-      #   run: bash scripts/frontend-build-living-style-guide.bash
+      - name: '🏗️  Build Frontend living-style-guide'
+        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'pull-request'
+        run: bash scripts/frontend-build-living-style-guide.bash
