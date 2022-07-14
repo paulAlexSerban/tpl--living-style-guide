@@ -34,7 +34,7 @@ jobs:
         id: changed-frontend-living-style-guide-files
         with:
           files: |
-              frontend/living-style-guide/**/*
+              "./frontend/living-style-guide/**/*"
 
       - name: "Cache node_modules"
         if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
