@@ -29,7 +29,7 @@ jobs:
         id: changed-frontend-living-style-guide-files
         with:
           files: |
-            '**/frontend/living-style-guide/**/*.scss'
+            frontend/living-style-guide/**/*.scss
 
       - name: List all Living Style Guide changed files
         run: |
