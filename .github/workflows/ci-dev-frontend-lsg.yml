@@ -3,16 +3,12 @@ name: Develop Frontend Living Style Guide
 
 on:
   push:
-    paths:
-      - "./frontend/living-style-guide/**/*"
     branches-ignore:
       - release
       - main
       - develop
 
   pull_request:
-      paths:
-      - "frontend/living-style-guide/*"
 
   workflow_call:
 
