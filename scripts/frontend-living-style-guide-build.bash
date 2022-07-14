@@ -2,4 +2,4 @@
 # makes sure the folder containing the script will be the root folder
 cd "$(dirname "$0")" || exit
 
-echo "Build script should be impleneted here, but shellscript is not getting triggered"
+echo "Build script should be impleneted here"

@@ -2,8 +2,8 @@
 name: Lint Scripts
 on:
   push:
-    paths:
-      - **/*.bash
+    paths: 
+      - "**/*.bash"
     branches-ignore:
       - release
       - main
