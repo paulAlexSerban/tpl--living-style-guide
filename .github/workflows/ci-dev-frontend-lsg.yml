@@ -11,7 +11,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   dev-fe-lsg:
@@ -37,7 +37,7 @@ jobs:
           done
 
       - name: 'Cache node_modules'
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' || 'workflow_dispatch'
         uses: actions/cache@v1
         with:
           path: ~/.npm
@@ -46,17 +46,17 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: '🔧  Setup NodeJS 14.19.1'
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' || 'workflow_dispatch'
         uses: actions/setup-node@v1
         with:
           node-version: 14.19.1
 
       - name: '🔧  Install npm@latest'
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+        if: ssteps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' || 'workflow_dispatch'
         run: npm i -g npm@latest
 
       - name: '📦  Install Frontend Living Style Guide Development dependencies'
-        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
+        if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' || 'workflow_dispatch'
         run: bash scripts/frontend-living-style-guide-install.bash
 
       - name: '🔍  Lint Frontend Living Style Guide'
@@ -68,5 +68,5 @@ jobs:
         run: bash scripts/frontend-living-style-guide-test.bash
 
       - name: '🏗️  Build Frontend living-style-guide'
-        if: (steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'pull_request') || 'workflow_call'
+        if: (steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'pull_request') || 'workflow_dispatch'
         run: bash scripts/frontend-living-style-guide-build.bash
