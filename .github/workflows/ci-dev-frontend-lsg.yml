@@ -3,6 +3,8 @@ name: Develop Frontend Living Style Guide
 
 on:
   push:
+    paths: 
+      - "frontend/living-style-guide/**/*"
     branches-ignore:
       - release
       - main
@@ -30,6 +32,12 @@ jobs:
         with:
           files: |
               "./frontend/living-style-guide/**/*"
+
+      - name: List all Living Style Guide changed files
+        run: |
+          for file in ${{ steps.changed-frontend-living-style-guide-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
 
       - name: "Cache node_modules"
         if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
