@@ -56,7 +56,7 @@ jobs:
 
       - name: "📦  Install Frontend Living Style Guide Development dependencies"
         if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true'
-        run: bash scripts/frontend-install-living-style-guide.bash
+        run: bash scripts/frontend-living-style-guide-install.bash
 
       - name: "🔍  Lint Frontend Living Style Guide"
         if: steps.changed-frontend-living-style-guide-files.outputs.any_changed == 'true' && github.event_name == 'push'
