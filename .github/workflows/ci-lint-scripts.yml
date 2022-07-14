@@ -2,12 +2,13 @@
 name: Lint Scripts
 on:
   push:
+    paths:
+      - ./**/*.bash
     branches-ignore:
       - release
       - main
       - develop
-    paths:
-      - ./**/*.bash
+
   workflow_call:
 
 jobs:
